@@ -1,4 +1,5 @@
 bazel_dep(name = "rules_rust", version = "0.67.0")
+bazel_dep(name = "rules_python", version = "0.40.0")
 
 # Ingests dependencies from Cargo.toml files into Bazel repository
 crate = use_extension("@rules_rust//crate_universe:extensions.bzl", "crate")
@@ -10,6 +11,20 @@ crate.from_cargo(
 # Cargo.toml-collected dependencies are made available to 
 # each module's BUILD.bazel files under the @crates// repository.
 use_repo(crate, "crates")
+
+# Python dependencies
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    python_version = "3.11",
+)
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pip",
+    python_version = "3.11",
+    requirements_lock = "//python_nodes/pub_test_python:requirements.txt",
+)
+use_repo(pip, "pip")
 
 # Use the following boilerplate in each BUILD.bazel file:
 # 

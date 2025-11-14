@@ -1,0 +1,12 @@
+load("@rules_python//python:defs.bzl", "py_binary")
+load("@pip//:requirements.bzl", "requirement")
+
+py_binary(
+    name = "temp_pub",
+    srcs = ["temp_pub.py"],
+    main = "temp_pub.py",
+    deps = [
+        requirement("eclipse-zenoh"),
+    ],
+)
+
