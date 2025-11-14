@@ -16,7 +16,7 @@ use_repo(crate, "crates")
 # load("@crates//:defs.bzl", "all_crate_deps", "aliases")
 # 
 # rust_binary(
-#     name = "sub",
+#     name = "<package_name>",
 #     srcs = ["src/main.rs"],
 #     edition = "2021",
 #     aliases = aliases(),
