@@ -1,0 +1,24 @@
+bazel_dep(name = "rules_rust", version = "0.67.0")
+
+# Ingests dependencies from Cargo.toml files into Bazel repository
+crate = use_extension("@rules_rust//crate_universe:extensions.bzl", "crate")
+crate.from_cargo(
+    name = "crates",
+    manifests = [], # TODO: Paths to Cargo.toml files (format //path/to:Cargo.toml)
+)
+
+# Cargo.toml-collected dependencies are made available to 
+# each module's BUILD.bazel files under the @crates// repository.
+use_repo(crate, "crates")
+
+# Use the following boilerplate in each BUILD.bazel file:
+# 
+# load("@crates//:defs.bzl", "all_crate_deps", "aliases")
+# 
+# rust_binary(
+#     name = "sub",
+#     srcs = ["src/main.rs"],
+#     edition = "2021",
+#     aliases = aliases(),
+#     deps = all_crate_deps(normal = True),
+# )

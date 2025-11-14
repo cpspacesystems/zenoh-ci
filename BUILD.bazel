@@ -1,0 +1,7 @@
+# //BUILD.bazel
+package(default_visibility = ["//visibility:public"])
+exports_files([
+    "MODULE.bazel",
+    "Cargo.lock",
+    "Cargo.toml",
+])
