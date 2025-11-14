@@ -1,0 +1,2 @@
+[workspace]
+members = ["pub_test", "sub_test"]

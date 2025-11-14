@@ -4,7 +4,7 @@ bazel_dep(name = "rules_rust", version = "0.67.0")
 crate = use_extension("@rules_rust//crate_universe:extensions.bzl", "crate")
 crate.from_cargo(
     name = "crates",
-    manifests = [], # TODO: Paths to Cargo.toml files (format //path/to:Cargo.toml)
+    manifests = ["//rust_nodes/pub_test:Cargo.toml", "//rust_nodes/sub_test:Cargo.toml"],
 )
 
 # Cargo.toml-collected dependencies are made available to 

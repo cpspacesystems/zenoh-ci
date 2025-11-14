@@ -1,0 +1,9 @@
+[package]
+name = "sub_test"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = "1.48.0"
+zenoh = "1.6.2"
+zenoh-ext = "1.6.2"
