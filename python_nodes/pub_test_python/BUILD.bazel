@@ -2,11 +2,12 @@ load("@rules_python//python:defs.bzl", "py_binary")
 load("@pip//:requirements.bzl", "requirement")
 
 py_binary(
-    name = "temp_pub",
-    srcs = ["temp_pub.py"],
-    main = "temp_pub.py",
+    name = "mock_sensor",
+    srcs = ["mock_sensor.py"],
+    main = "mock_sensor.py",
     deps = [
         requirement("eclipse-zenoh"),
+        requirement("numpy"),
     ],
 )
 
