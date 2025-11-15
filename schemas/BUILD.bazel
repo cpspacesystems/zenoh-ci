@@ -7,7 +7,7 @@ genrule(
     outs = [
         "sensors/Altitude.py",
         "sensors/Gyro.py",
-        "sensors/Kinematics.py",
+        "sensors/IMU.py",
         "sensors/Vec3.py",
         "sensors/__init__.py",
     ],

@@ -3,7 +3,11 @@ load("@pip//:requirements.bzl", "requirement")
 
 py_binary(
     name = "mock_sensor",
-    srcs = ["mock_sensor.py"],
+    srcs = [
+        "__init__.py",
+        "mock_sensor.py",
+        "covariances.py",
+    ],
     main = "mock_sensor.py",
     deps = [
         "//schemas:sensors_py",

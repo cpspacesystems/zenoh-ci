@@ -8,4 +8,5 @@ dependencies = [
     "eclipse-zenoh>=1.6.2",
     "flatbuffers>=25.9.23",
     "numpy>=2.3.4",
+    "zenoh-cli>=0.6.8",
 ]

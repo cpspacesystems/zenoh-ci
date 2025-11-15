@@ -6,9 +6,7 @@ struct Vec3 {
   z: float;
 }
 
-table Kinematics {
-  position: Vec3;
-  velocity: Vec3;
+table IMU {
   acceleration: Vec3;
 }
 
@@ -22,5 +20,5 @@ table Gyro {
   omega_z: float;
 }
 
-root_type Kinematics;
+root_type IMU;
 
