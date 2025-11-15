@@ -6,7 +6,9 @@ py_binary(
     srcs = ["mock_sensor.py"],
     main = "mock_sensor.py",
     deps = [
+        "//schemas:sensors_py",
         requirement("eclipse-zenoh"),
+        requirement("flatbuffers"),
         requirement("numpy"),
     ],
 )

@@ -1,0 +1,26 @@
+namespace sensors;
+
+struct Vec3 {
+  x: float;
+  y: float;
+  z: float;
+}
+
+table Kinematics {
+  position: Vec3;
+  velocity: Vec3;
+  acceleration: Vec3;
+}
+
+table Altitude {
+  altitude: float;
+}
+
+table Gyro {
+  omega_x: float;
+  omega_y: float;
+  omega_z: float;
+}
+
+root_type Kinematics;
+

@@ -1,0 +1,29 @@
+load("@rules_python//python:defs.bzl", "py_library")
+load("@pip//:requirements.bzl", "requirement")
+
+genrule(
+    name = "sensors_py_gen",
+    srcs = ["sensors.fbs"],
+    outs = [
+        "sensors/Altitude.py",
+        "sensors/Gyro.py",
+        "sensors/Kinematics.py",
+        "sensors/Vec3.py",
+        "sensors/__init__.py",
+    ],
+    tools = ["@flatbuffers//:flatc"],
+    cmd = """
+      rm -rf $(@D)/sensors && mkdir -p $(@D)/sensors
+      $(location @flatbuffers//:flatc) --python -o $(@D) $(SRCS)
+      : > $(@D)/sensors/__init__.py
+    """,
+)
+
+py_library(
+    name = "sensors_py",
+    srcs = [":sensors_py_gen"],
+    deps = [
+        requirement("flatbuffers"),
+    ],
+    visibility = ["//visibility:public"],
+)
