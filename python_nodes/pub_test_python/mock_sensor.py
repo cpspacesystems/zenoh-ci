@@ -178,7 +178,7 @@ def main():
     print(f"Flight time: {FLIGHT_TIME:.2f}s, Max altitude: {MAX_ALTITUDE:.2f}m")
 
     session = zenoh.open(zenoh.Config())
-    target_topic = f"devices/{broadcast_type}_{sensor_id}"
+    target_topic = f"devices/{broadcast_type}{sensor_id}"
     launch_topic = "launch"
 
     def launch_handler(sample):

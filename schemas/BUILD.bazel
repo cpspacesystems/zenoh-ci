@@ -1,5 +1,7 @@
 load("@rules_python//python:defs.bzl", "py_library")
 load("@pip//:requirements.bzl", "requirement")
+load("@rules_rust//rust:defs.bzl", "rust_library")
+load("@crates//:defs.bzl", "all_crate_deps", "aliases")
 
 genrule(
     name = "sensors_py_gen",
@@ -24,6 +26,29 @@ py_library(
     srcs = [":sensors_py_gen"],
     deps = [
         requirement("flatbuffers"),
+    ],
+    visibility = ["//visibility:public"],
+)
+
+genrule(
+    name = "sensors_rs_gen",
+    srcs = ["sensors.fbs"],
+    tools = ["@flatbuffers//:flatc"],
+    outs = ["sensors_generated.rs"],
+    cmd = """
+      rm -f $(@D)/sensors_generated.rs
+      $(location @flatbuffers//:flatc) --rust -o $(@D) $(SRCS)
+    """,
+)
+
+rust_library(
+    name = "sensors_rs",
+    srcs = [":sensors_rs_gen"],
+    crate_root = "sensors_generated.rs",
+    edition = "2021",
+    aliases = aliases(),
+    deps = [
+        "@crates//:flatbuffers",
     ],
     visibility = ["//visibility:public"],
 )

@@ -6,7 +6,11 @@ bazel_dep(name = "flatbuffers", version = "25.2.10")
 crate = use_extension("@rules_rust//crate_universe:extensions.bzl", "crate")
 crate.from_cargo(
     name = "crates",
-    manifests = ["//rust_nodes/pub_test:Cargo.toml", "//rust_nodes/sub_test:Cargo.toml"],
+    manifests = [
+        "//rust_nodes/pub_test:Cargo.toml",
+        "//rust_nodes/sub_test:Cargo.toml",
+        "//rust_nodes/fusion:Cargo.toml"
+    ],
 )
 
 # Cargo.toml-collected dependencies are made available to 

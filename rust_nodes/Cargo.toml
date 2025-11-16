@@ -1,2 +1,2 @@
 [workspace]
-members = ["pub_test", "sub_test"]
+members = ["fusion","pub_test", "sub_test"]
