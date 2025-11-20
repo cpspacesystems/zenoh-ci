@@ -1,5 +1,7 @@
 # Zenoh CI PoC
 
+> This repo's name is a misnomer. It currently serves as a development repo for a sensor fusion framework.
+
 Meant to serve as an example of a typical multi-language Zenoh project and
 to demonstrate we can configure basic CI functionality.
 
